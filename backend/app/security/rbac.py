@@ -51,6 +51,9 @@ class RoleChecker:
         return current_user
 
 # Predefined role dependencies
+def require_roles(allowed_roles: List[str]):
+    return RoleChecker(allowed_roles)
+
 require_user = RoleChecker(["USER", "ADMIN", "SUPER_ADMIN"])
 require_admin = RoleChecker(["ADMIN", "SUPER_ADMIN"])
 require_super_admin = RoleChecker(["SUPER_ADMIN"])
