@@ -10,6 +10,9 @@ import SystemSettings from './pages/SystemSettings';
 import UploadImage from './pages/UploadImage';
 import EncryptStudio from './pages/EncryptStudio';
 import DecryptStudio from './pages/DecryptStudio';
+import AuditLogs from './pages/AuditLogs';
+import AiMonitoring from './pages/AiMonitoring';
+import SecurityEvaluation from './pages/SecurityEvaluation';
 import { authService } from './services/authService';
 import { Lock, Eye, Share2, BarChart3, AlertTriangle, Database, FolderInput, Clock } from 'lucide-react';
 
@@ -111,32 +114,11 @@ export default function App() {
             />
           )}
 
-          {activeTab === 'evaluation' && (
-            <PhasePlaceholder
-              phaseNumber={11}
-              title="Security Evaluation Dashboard"
-              icon={BarChart3}
-              description="Comparative statistical evaluation: Shannon Entropy, NPCR, UACI, Horizontal/Vertical/Diagonal correlation scatterplots, and 4-way benchmark comparisons."
-            />
-          )}
+          {activeTab === 'evaluation' && <SecurityEvaluation />}
 
-          {activeTab === 'monitoring' && (
-            <PhasePlaceholder
-              phaseNumber={10}
-              title="AI Anomaly Detection Sentry"
-              icon={AlertTriangle}
-              description="Scikit-learn Isolation Forest unsupervised model combined with heuristic rule engines to monitor access spikes, nocturnal requests, and decryption failures."
-            />
-          )}
+          {activeTab === 'monitoring' && <AiMonitoring />}
 
-          {activeTab === 'audit' && (
-            <PhasePlaceholder
-              phaseNumber={9}
-              title="Cryptographic Hash-Chained Audit Trail"
-              icon={Database}
-              description="Tamper-evident audit logging where every operational event is mathematically chained with SHA-256 digests: Hash(n) = SHA256(Hash(n-1) || LogData)."
-            />
-          )}
+          {activeTab === 'audit' && <AuditLogs />}
         </main>
       </div>
     </div>

@@ -91,9 +91,6 @@ export default function UploadImage({ onProceedToEncrypt }) {
           <FolderInput className="w-5 h-5 text-sky-400" />
           <span>Diagnostic Scan Ingestion & Preprocessing</span>
         </h2>
-        <p className="text-xs text-slate-400">
-          Validates magic bytes, extracts dimensions (H x W x C), isolates metadata, and computes original SHA-256 integrity hash
-        </p>
       </div>
 
       {/* Synthetic Demonstration Scan Selector */}
@@ -145,7 +142,6 @@ export default function UploadImage({ onProceedToEncrypt }) {
               <p className="text-xs font-bold text-white group-hover:text-sky-300 transition-colors">
                 {sample.title}
               </p>
-              <p className="text-[11px] text-slate-400 leading-snug">{sample.desc}</p>
               <div className="pt-2 text-[10px] font-mono text-sky-400 flex items-center space-x-1">
                 <span>Ingest Sample</span>
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />

@@ -14,6 +14,9 @@ from app.routes.system import router as system_router
 from app.routes.images import router as images_router
 from app.routes.crypto import router as crypto_router
 from app.routes.shares import router as shares_router
+from app.routes.audit import router as audit_router
+from app.routes.ai_monitoring import router as ai_router
+from app.routes.evaluation import router as evaluation_router
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -46,6 +49,10 @@ app.include_router(users_router)
 app.include_router(system_router)
 app.include_router(images_router)
 app.include_router(crypto_router)
+app.include_router(shares_router)
+app.include_router(audit_router)
+app.include_router(ai_router)
+app.include_router(evaluation_router)
 
 @app.get("/", tags=["Health"])
 async def root():

@@ -11,9 +11,9 @@ export default function Sidebar({ activeTab, setActiveTab, userRole = 'USER' }) 
     { id: 'encrypt', label: 'Hybrid Encryption', icon: Lock, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
     { id: 'decrypt', label: 'Decryption & Verify', icon: Eye, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
     { id: 'shares', label: 'Secure Image Sharing', icon: Share2, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
-    { id: 'evaluation', label: 'Security Analytics', icon: BarChart3, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
-    { id: 'monitoring', label: 'AI Anomaly Sentry', icon: AlertTriangle, roles: ['ADMIN', 'SUPER_ADMIN'] },
-    { id: 'audit', label: 'Tamper Audit Trail', icon: Database, roles: ['ADMIN', 'SUPER_ADMIN'] },
+    { id: 'evaluation', label: 'Security Evaluation', icon: BarChart3, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
+    { id: 'monitoring', label: 'AI Anomaly Sentry', icon: AlertTriangle, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
+    { id: 'audit', label: 'Audit Hash Chain', icon: Database, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
     { id: 'users', label: 'Clinician Directory', icon: Users, roles: ['USER', 'ADMIN', 'SUPER_ADMIN'] },
     { id: 'settings', label: 'System Policies', icon: Settings, roles: ['SUPER_ADMIN'] },
   ];

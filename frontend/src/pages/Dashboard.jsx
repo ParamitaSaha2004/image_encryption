@@ -34,9 +34,6 @@ export default function Dashboard({ user, onNavigate }) {
           <h2 className="text-2xl font-black text-white tracking-tight">
             Welcome, {user?.username || 'Authorized User'}
           </h2>
-          <p className="text-xs text-slate-400 max-w-2xl leading-relaxed">
-            HICE Cryptographic Vault is operational. Medical scans are processed using Chaotic Permutation, Cellular Automata Diffusion, and NIST AES-256-GCM.
-          </p>
         </div>
 
         <div className="flex items-center space-x-3">
@@ -104,34 +101,25 @@ export default function Dashboard({ user, onNavigate }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
+          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
             <div className="flex items-center justify-between text-slate-200 font-semibold">
               <span>Chaotic Logistic Map</span>
               <span className="font-mono text-sky-400">r ∈ [3.9, 4.0]</span>
             </div>
-            <p className="text-slate-400 text-[11px] leading-relaxed">
-              Dynamically maps continuous trajectory to discrete index permutations, breaking spatial visual correlation across image matrices.
-            </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
+          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
             <div className="flex items-center justify-between text-slate-200 font-semibold">
               <span>Cellular Automata (Rule 30/90)</span>
               <span className="font-mono text-sky-400">Diffusion Mask</span>
             </div>
-            <p className="text-slate-400 text-[11px] leading-relaxed">
-              Evolves neighbor state bitwise operations for reversible pixel diffusion. Guaranteed bit-exact reconstruction upon authorized decryption.
-            </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
+          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
             <div className="flex items-center justify-between text-slate-200 font-semibold">
               <span>AI Anomaly Sentry</span>
               <span className="font-mono text-emerald-400">Isolation Forest</span>
             </div>
-            <p className="text-slate-400 text-[11px] leading-relaxed">
-              Unsupervised machine learning monitors access velocity, anomalous nighttime requests, and consecutive authentication errors.
-            </p>
           </div>
         </div>
       </div>
