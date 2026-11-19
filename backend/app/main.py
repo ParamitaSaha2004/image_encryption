@@ -16,16 +16,13 @@ from app.routes.images import router as images_router
 from app.routes.crypto import router as crypto_router
 from app.routes.shares import router as shares_router
 from app.routes.audit import router as audit_router
-<<<<<<< HEAD
 from app.routes.ai_monitoring import router as ai_router
-=======
 from app.routes.monitoring import router as monitoring_router
->>>>>>> e08587c667bdc0eebf0dc2a54f76718076b1d5e6
 from app.routes.evaluation import router as evaluation_router
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="Hybrid Intelligent Image Encryption and Secure Sharing System API",
+    description="",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc"
@@ -56,11 +53,8 @@ app.include_router(images_router)
 app.include_router(crypto_router)
 app.include_router(shares_router)
 app.include_router(audit_router)
-<<<<<<< HEAD
 app.include_router(ai_router)
-=======
 app.include_router(monitoring_router)
->>>>>>> e08587c667bdc0eebf0dc2a54f76718076b1d5e6
 app.include_router(evaluation_router)
 
 @app.get("/", tags=["Health"])

@@ -56,7 +56,7 @@ export default function DecryptStudio() {
         setDecryptResult(res);
       } else {
         if (!uploadedFile) {
-          throw new Error('Please select or upload a .hice file from your disk.');
+          throw new Error('Please select or upload an encrypted package from your disk.');
         }
         const res = await cryptoService.directDecryptFile(uploadedFile, masterKey);
         setDecryptResult(res);
@@ -91,9 +91,6 @@ export default function DecryptStudio() {
               <h1 className="text-2xl font-bold text-white tracking-tight">
                 Hybrid Decryption & Bit-Exact Verification Studio
               </h1>
-              <p className="text-sm text-slate-400 mt-0.5">
-                Phase 7 Atomic Reverse Pipeline: AES-256-GCM AEAD Tag Authentication → Inverse Cellular Automata → Inverse Chaotic Permutation
-              </p>
             </div>
           </div>
         </div>
@@ -120,7 +117,7 @@ export default function DecryptStudio() {
             }`}
           >
             <Upload className="w-3.5 h-3.5" />
-            <span>Upload .hice File</span>
+            <span>Upload Package</span>
           </button>
         </div>
       </div>
@@ -161,11 +158,11 @@ export default function DecryptStudio() {
             ) : (
               <div className="space-y-3">
                 <label className="text-xs font-medium text-slate-400">
-                  Select .hice Binary Container from Disk
+                  Select Binary Container from Disk
                 </label>
                 <input
                   type="file"
-                  accept=".hice"
+                  accept=".hice,.enc,.bin"
                   onChange={(e) => { setUploadedFile(e.target.files[0] || null); setDecryptResult(null); setErrorMsg(''); }}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20"
                 />
@@ -246,7 +243,7 @@ export default function DecryptStudio() {
             <div className="space-y-2 text-xs">
               <div className="flex items-center space-x-2 p-2 rounded-lg bg-slate-950 border border-slate-800 text-slate-300">
                 <span className="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-mono text-[10px]">1</span>
-                <span>Unpack .hice Container & Extract AAD</span>
+                <span>Unpack Container & Extract AAD</span>
               </div>
               <div className="flex items-center space-x-2 p-2 rounded-lg bg-slate-950 border border-slate-800 text-slate-300">
                 <span className="w-5 h-5 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-mono text-[10px]">2</span>
@@ -394,7 +391,7 @@ export default function DecryptStudio() {
                 Awaiting Decryption Command
               </h4>
               <p className="text-xs text-slate-500 max-w-sm">
-                Select an encrypted scan from the vault or upload a .hice binary container and click "Execute Reverse Pipeline" to recover the lossless scan.
+                Select an encrypted scan from the vault or upload a package and click "Execute Reverse Pipeline" to recover the lossless scan.
               </p>
             </div>
           )}

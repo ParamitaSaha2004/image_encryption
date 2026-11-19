@@ -1,0 +1,14 @@
+M	backend/app/main.py
+A	backend/app/routes/ai_monitoring.py
+M	backend/app/routes/audit.py
+M	backend/app/routes/evaluation.py
+M	frontend/src/App.jsx
+M	frontend/src/components/Sidebar.jsx
+A	frontend/src/pages/AiMonitoring.jsx
+A	frontend/src/pages/AuditLogs.jsx
+M	frontend/src/pages/Dashboard.jsx
+A	frontend/src/pages/SecurityEvaluation.jsx
+M	frontend/src/pages/UploadImage.jsx
+A	start_all.bat
+A	start_backend.bat
+A	start_frontend.bat

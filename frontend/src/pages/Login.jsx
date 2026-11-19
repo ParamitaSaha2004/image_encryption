@@ -45,7 +45,6 @@ export default function Login({ onLoginSuccess, onGoToRegister, onBackToLanding 
               <Shield className="w-8 h-8" />
             </div>
             <h2 className="text-xl font-bold text-white tracking-tight">Clinician Authentication</h2>
-            <p className="text-xs text-slate-400">Authenticate to decrypt authorized medical records</p>
           </div>
 
           {error && (

@@ -28,8 +28,7 @@ export default function Sidebar({ activeTab, setActiveTab, userRole = 'USER' }) 
             <Shield className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-extrabold text-base tracking-wider text-white">HICE</h1>
-            <p className="text-[10px] text-sky-400 font-mono tracking-widest uppercase">Hybrid Platform</p>
+            <h1 className="font-extrabold text-base tracking-wider text-white">SecurePix</h1>
           </div>
         </div>
 
