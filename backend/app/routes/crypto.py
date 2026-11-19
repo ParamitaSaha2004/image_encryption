@@ -22,6 +22,8 @@ from app.encryption.aes_gcm import AES256GCMEngine, TamperingDetectedError
 from app.encryption.hybrid_pipeline import HybridEncryptionPipeline, HybridPipelineError
 from app.decryption.hybrid_decryption import HybridDecryptionPipeline, CryptographicIntegrityError
 from app.models.db_models import AuditLog, EncryptionMetric
+from app.security.audit_ledger import AuditLedger
+from app.ai_monitoring.anomaly_detector import AISecuritySentry
 from app.image_processing.preprocessor import ImagePreprocessor
 from app.config import settings
 from fastapi.responses import FileResponse, Response
@@ -396,9 +398,10 @@ def run_hybrid_encryption(
     img_record.auth_tag_hex = pipeline_res["auth_tag_hex"]
     img_record.aad_json = pipeline_res["aad_payload"]
 
-    audit_entry = AuditLog(
-        user_id=current_user.user_id,
+    AuditLedger.record_event(
+        db=db,
         action="HYBRID_ENCRYPTION",
+        user_id=current_user.user_id,
         target_resource_type="IMAGE",
         target_resource_id=image_id,
         ip_address="127.0.0.1",
@@ -408,12 +411,8 @@ def run_hybrid_encryption(
             "ca_rule": ca_rule,
             "ciphertext_sha256": pipeline_res["ciphertext_sha256"],
             "package_size": pipeline_res["package_size_bytes"]
-        },
-        prev_record_hash="0" * 64,
-        current_record_hash="0" * 64
+        }
     )
-    db.add(audit_entry)
-    db.commit()
 
     return {
         "status": "SUCCESS",
@@ -466,19 +465,26 @@ def run_hybrid_decryption(
             verify_bit_exact=verify_bit_exact
         )
     except TamperingDetectedError as e:
-        audit_entry = AuditLog(
-            user_id=current_user.user_id,
+        AuditLedger.record_event(
+            db=db,
             action="HYBRID_DECRYPTION",
+            user_id=current_user.user_id,
             target_resource_type="IMAGE",
             target_resource_id=image_id,
             ip_address="127.0.0.1",
             status="TAMPER_DETECTED",
-            details_json={"error": str(e)},
-            prev_record_hash="0" * 64,
-            current_record_hash="0" * 64
+            details_json={"error": str(e)}
         )
-        db.add(audit_entry)
-        db.commit()
+        # Notify AI Security Sentry of decryption tampering event
+        AISecuritySentry.get_instance().analyze_event(
+            features={
+                "hour_of_day": datetime.now(timezone.utc).hour,
+                "failed_decryptions_recent": 3,
+                "request_rate_recent": 10
+            },
+            user_id=current_user.user_id,
+            db=db
+        )
         raise HTTPException(
             status_code=403, 
             detail=f"TAMPERING DETECTED: Authenticated decryption failed. {str(e)}"
@@ -488,9 +494,10 @@ def run_hybrid_decryption(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Decryption failed: {str(e)}")
 
-    audit_entry = AuditLog(
-        user_id=current_user.user_id,
+    AuditLedger.record_event(
+        db=db,
         action="HYBRID_DECRYPTION",
+        user_id=current_user.user_id,
         target_resource_type="IMAGE",
         target_resource_id=image_id,
         ip_address="127.0.0.1",
@@ -498,12 +505,8 @@ def run_hybrid_decryption(
         details_json={
             "performance": decrypt_res["performance"],
             "is_bit_exact": decrypt_res["is_bit_exact"]
-        },
-        prev_record_hash="0" * 64,
-        current_record_hash="0" * 64
+        }
     )
-    db.add(audit_entry)
-    db.commit()
 
     return {
         "status": "SUCCESS",

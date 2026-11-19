@@ -19,6 +19,7 @@ from app.security.rbac import get_current_user
 from app.image_processing.preprocessor import ImagePreprocessor
 from app.image_processing.validator import ImageValidationError
 from app.image_processing.metadata_extractor import MetadataSanitizer
+from app.security.audit_ledger import AuditLedger
 from app.config import settings
 
 router = APIRouter(prefix="/api/v1/images", tags=["Image Ingestion"])
@@ -105,10 +106,11 @@ async def upload_image(
     )
     db.add(meta_record)
 
-    # Cryptographic Audit Log
-    audit_entry = AuditLog(
-        user_id=current_user.user_id,
+    # Cryptographic Hash-Chained Audit Log
+    AuditLedger.record_event(
+        db=db,
         action="IMAGE_INGESTION",
+        user_id=current_user.user_id,
         target_resource_type="IMAGE",
         target_resource_id=image_id,
         ip_address="127.0.0.1",
@@ -117,12 +119,8 @@ async def upload_image(
             "filename": filename,
             "dimensions": f"{processed['width']}x{processed['height']}x{processed['channels']}",
             "sha256": processed["original_sha256"]
-        },
-        prev_record_hash="0" * 64,
-        current_record_hash="0" * 64
+        }
     )
-    db.add(audit_entry)
-    db.commit()
 
     return {
         "status": "SUCCESS",
