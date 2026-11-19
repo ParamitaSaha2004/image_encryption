@@ -161,9 +161,6 @@ export default function EncryptStudio({ onProceedToFullPipeline }) {
             <Cpu className="w-6 h-6 text-sky-400" />
             <span>Hybrid Cryptographic Studio</span>
           </h2>
-          <p className="text-xs text-slate-400 max-w-3xl leading-relaxed mt-1">
-            Combines non-linear Logistic Map permutation, Elementary Cellular Automata diffusion, NIST P-256 Key Agreement, and AES-256-GCM authenticated encryption.
-          </p>
         </div>
 
         {/* Stage Selector Pills */}
@@ -514,12 +511,9 @@ export default function EncryptStudio({ onProceedToFullPipeline }) {
                     Phase 7 Full Pipeline
                   </span>
                   <h3 className="text-base font-bold text-white">
-                    Execute End-to-End Hybrid Encryption & Generate .hice Vault Package
+                    Execute End-to-End Hybrid Encryption & Generate SecurePix Package
                   </h3>
                 </div>
-                <p className="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
-                  Sequentially executes Chaotic Permutation (Logistic Map) → Cellular Automata Diffusion (Rule {caRule}) → AES-256-GCM AEAD Authenticated Encryption. Packages outputs into a standardized <code className="text-sky-300">.hice</code> binary container in the vault.
-                </p>
               </div>
 
               <div className="flex items-center space-x-3 flex-shrink-0">
@@ -585,7 +579,7 @@ export default function EncryptStudio({ onProceedToFullPipeline }) {
                     className="px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center justify-center space-x-1.5 transition-all flex-shrink-0"
                   >
                     <Download className="w-3.5 h-3.5" />
-                    <span>Download .hice</span>
+                    <span>Download Package</span>
                   </a>
                 </div>
               </div>

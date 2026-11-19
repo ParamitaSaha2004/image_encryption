@@ -130,9 +130,6 @@ export default function SharingStudio() {
             <span className="text-xs font-mono text-slate-400">NIST P-256 ECDH Key Encapsulation</span>
           </div>
           <h1 className="text-2xl font-bold text-white mt-1">Secure Image Sharing & Granular Access Control</h1>
-          <p className="text-sm text-slate-400">
-            Authorized doctor-to-doctor transfer, asymmetric key encapsulation, time-limited validity, and instant revocation.
-          </p>
         </div>
 
         {/* Tab Controls */}
@@ -301,7 +298,7 @@ export default function SharingStudio() {
               <span>ECDH Protocol Mechanics</span>
             </h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              When sharing, HICE generates an ephemeral NIST P-256 Elliptic Curve key pair $(d_{eph}, Q_{eph})$.
+              When sharing, SecurePix generates an ephemeral NIST P-256 Elliptic Curve key pair $(d_{eph}, Q_{eph})$.
             </p>
             <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-mono text-sky-300 space-y-1">
               <div>1. Z = d_eph · Q_recipient</div>

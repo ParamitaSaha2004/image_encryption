@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 class Settings:
-    APP_NAME: str = os.getenv("APP_NAME", "HICE-Security-Platform")
+    APP_NAME: str = os.getenv("APP_NAME", "SecurePix")
     APP_ENV: str = os.getenv("APP_ENV", "development")
     DEBUG: bool = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")
     PORT: int = int(os.getenv("PORT", "8000"))

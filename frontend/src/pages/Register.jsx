@@ -41,7 +41,6 @@ export default function Register({ onRegisterSuccess, onGoToLogin }) {
               <Shield className="w-8 h-8" />
             </div>
             <h2 className="text-xl font-bold text-white tracking-tight">Clinician Enrollment</h2>
-            <p className="text-xs text-slate-400">Generate NIST P-256 Keypair & register secure identity</p>
           </div>
 
           {error && (

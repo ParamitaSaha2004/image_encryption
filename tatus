@@ -1,0 +1,28 @@
+[1mdiff --git a/backend/app/main.py b/backend/app/main.py[m
+[1mindex b8f74b9..88ca218 100644[m
+[1m--- a/backend/app/main.py[m
+[1m+++ b/backend/app/main.py[m
+[36m@@ -16,11 +16,7 @@[m [mfrom app.routes.images import router as images_router[m
+ from app.routes.crypto import router as crypto_router[m
+ from app.routes.shares import router as shares_router[m
+ from app.routes.audit import router as audit_router[m
+[31m-<<<<<<< HEAD[m
+ from app.routes.ai_monitoring import router as ai_router[m
+[31m-=======[m
+[31m-from app.routes.monitoring import router as monitoring_router[m
+[31m->>>>>>> e08587c667bdc0eebf0dc2a54f76718076b1d5e6[m
+ from app.routes.evaluation import router as evaluation_router[m
+ [m
+ app = FastAPI([m
+[36m@@ -56,11 +52,7 @@[m [mapp.include_router(images_router)[m
+ app.include_router(crypto_router)[m
+ app.include_router(shares_router)[m
+ app.include_router(audit_router)[m
+[31m-<<<<<<< HEAD[m
+ app.include_router(ai_router)[m
+[31m-=======[m
+[31m-app.include_router(monitoring_router)[m
+[31m->>>>>>> e08587c667bdc0eebf0dc2a54f76718076b1d5e6[m
+ app.include_router(evaluation_router)[m
+ [m
+ @app.get("/", tags=["Health"])[m

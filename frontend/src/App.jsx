@@ -10,6 +10,7 @@ import SystemSettings from './pages/SystemSettings';
 import UploadImage from './pages/UploadImage';
 import EncryptStudio from './pages/EncryptStudio';
 import DecryptStudio from './pages/DecryptStudio';
+import SharingStudio from './pages/SharingStudio';
 import AuditLogs from './pages/AuditLogs';
 import AiMonitoring from './pages/AiMonitoring';
 import SecurityEvaluation from './pages/SecurityEvaluation';
@@ -105,14 +106,7 @@ export default function App() {
 
           {activeTab === 'decrypt' && <DecryptStudio />}
 
-          {activeTab === 'shares' && (
-            <PhasePlaceholder
-              phaseNumber={8}
-              title="Secure Image Sharing & ECDH Key Wrapping"
-              icon={Share2}
-              description="NIST P-256 Elliptic Curve Diffie-Hellman key agreement for authorized doctor-to-doctor transfer, with time-limited expirations and future revocation."
-            />
-          )}
+          {activeTab === 'shares' && <SharingStudio />}
 
           {activeTab === 'evaluation' && <SecurityEvaluation />}
 
